@@ -11,7 +11,15 @@ var Engine = (function(global) {
 
 	self.background = 'grey';
 
-	var grids = new Grids(0, 0, NO_ROWS, NO_COLS, CELL_WIDTH, CELL_HEIGTH);
+	var CELL_WIDTH = 20,
+			CELL_HEIGTH = 20,
+			NO_COLS = 10,
+			NO_ROWS = 10,
+			MATRIX_HEIGTH = CELL_HEIGTH * NO_ROWS,
+			MATRIX_WIDTH = CELL_WIDTH * NO_COLS;
+
+
+	var grids = new Grids(NO_ROWS, NO_COLS, CELL_WIDTH, CELL_HEIGTH);
 	var control = new Control(grids);
 
 	function main() {
@@ -32,6 +40,9 @@ var Engine = (function(global) {
 		lastTime = Date.now();
 		grids.init();
 		main();
+
+		/*========== test ==========*/
+		control.getCell(1,1).isAlive = true;
 	}
 
 	function update() {

@@ -55,3 +55,7 @@ Control.prototype.shouldDie = function() {
 
 	return false;
 };
+
+// Control.prototype.setCellAlive = function(x, y) {
+// 	this.getCell(x, y).isAlive = true;
+// }
