@@ -11,6 +11,9 @@ var Engine = (function(global) {
 
 	self.background = 'grey';
 
+	var grids = new Grids(0, 0, NO_ROWS, NO_COLS, CELL_WIDTH, CELL_HEIGTH);
+	var control = new Control(grids);
+
 	function main() {
 		var now = Date.now(),
 		dt = (now - lastTime) / 1000.0;

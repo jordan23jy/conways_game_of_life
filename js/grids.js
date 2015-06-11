@@ -5,9 +5,7 @@ var CELL_WIDTH = 20,
 		MATRIX_HEIGTH = CELL_HEIGTH * NO_ROWS,
 		MATRIX_WIDTH = CELL_WIDTH * NO_COLS;
 
-var Grids = function(x, y, numRows, numCols, width, height) {
-	this.x = x;
-	this.y = y;
+var Grids = function(numRows, numCols, width, height) {
 	this.numRows = numRows;
 	this.numCols = numCols;
 	this.width = width;
@@ -15,7 +13,7 @@ var Grids = function(x, y, numRows, numCols, width, height) {
 
 	this.gridBackground = 'lightgrey';
 	this.cellColour = 'green';
-	this.cells = [];
+	this.cellsArray = [];
 };
 
 Grids.prototype.init = function() {
@@ -23,7 +21,7 @@ Grids.prototype.init = function() {
 	for (var i = 0; i < this.numRows * this.numCols; i++) {
 			var x = i % this.numCols;
 			var y = Math.floor(i/this.numCols);
-			this.cells[i] = new Cell(x, y);
+			this.cellsArray[i] = new Cell(x, y, self.numCols, self.numRows);
 	}
 };
 
@@ -48,9 +46,13 @@ Grids.prototype.render = function(ctx) {
 		ctx.lineTo(self.width*self.numCols, j*self.height);
 		ctx.stroke();
 	}
-}
+};
 
 
 
-
-var grids = new Grids(0, 0, NO_ROWS, NO_COLS, CELL_WIDTH, CELL_HEIGTH);
+/*========== CELL ==========*/
+var Cell = function(x, y) {
+	this.x = x;
+	this.y = y;
+	this.isAlive = false;
+};
