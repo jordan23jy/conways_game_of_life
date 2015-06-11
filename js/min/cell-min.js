@@ -1,0 +1,1 @@
+var Cell=function(i,t){this.x=i,this.y=t,this.isAlive=!0};Cell.prototype.alive=function(){};

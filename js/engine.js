@@ -17,16 +17,17 @@ var Engine = (function(global) {
 
 		update();
 		clear();
-		render();
+		render(ctx);
 
 		lastTime = now;
-		console.log("hello");
+		// console.log("hello");
 
 		win.requestAnimationFrame(main);
 	}
 
 	function init() {
 		lastTime = Date.now();
+		grids.init();
 		main();
 	}
 
@@ -38,12 +39,12 @@ var Engine = (function(global) {
 
 	}
 
-	function render() {
-
+	function render(ctx) {
+		renderEntities(ctx);
 	}
 
-	function renderEntities() {
-
+	function renderEntities(ctx) {
+		grids.render(ctx);
 	}
 
 	function clear() {
