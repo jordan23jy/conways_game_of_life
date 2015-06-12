@@ -1,4 +1,3 @@
-
 $text-color: #776E65;
 $bright-text-color: #f9f6f2;
 $background-color: #faf8ef;
@@ -22,6 +21,25 @@ html, body {
   font-size: 18px;
 
 }
+
+h1 {
+  font-size: 4em;
+}
+
+#main {
+  padding: 50px;
+  margin-right: -300px;
+  &.toggled {
+    margin-right: 0px;
+  }
+}
+
+#game {
+  right: 500px;
+  display: block;
+  margin: 50px auto;
+}
+
 .wrapper {
   width: 100%;
   .row {
@@ -33,14 +51,6 @@ html, body {
   }
 }
 
-#main {
-  padding: 50px;
-  margin-right: -300px;
-  &.toggled {
-    margin-right: 0px;
-  }
-}
-
 .header_menu {
   margin-top: 20px;
   display: inline-block;
@@ -48,12 +58,6 @@ html, body {
   z-index: 10;
   top: 40px;
   left: 20px;
-}
-
-#game {
-  right: 500px;
-	display: block;
-	margin: 50px auto;
 }
 
 .sidebar {

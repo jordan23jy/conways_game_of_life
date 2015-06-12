@@ -11,6 +11,20 @@ html, body {
   font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
   font-size: 18px; }
 
+h1 {
+  font-size: 4em; }
+
+#main {
+  padding: 50px;
+  margin-right: -300px; }
+  #main.toggled {
+    margin-right: 0px; }
+
+#game {
+  right: 500px;
+  display: block;
+  margin: 50px auto; }
+
 .wrapper {
   width: 100%; }
   .wrapper .row {
@@ -19,12 +33,6 @@ html, body {
   .wrapper button {
     width: 90%; }
 
-#main {
-  padding: 50px;
-  margin-right: -300px; }
-  #main.toggled {
-    margin-right: 0px; }
-
 .header_menu {
   margin-top: 20px;
   display: inline-block;
@@ -32,11 +40,6 @@ html, body {
   z-index: 10;
   top: 40px;
   left: 20px; }
-
-#game {
-  right: 500px;
-  display: block;
-  margin: 50px auto; }
 
 .sidebar {
   float: left;
