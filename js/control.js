@@ -1,5 +1,7 @@
 var Control = function(grids) {
 	this.grids = grids;
+	this.speed = 2;
+	this.timeElapsed = 0;
 };
 
 Control.prototype.alive = function() {
@@ -51,11 +53,23 @@ Control.prototype.shouldDie = function(x, y) {
 	if (surroundingAlive.length > 3) {
 		return true;
 	}
+	// cell with 2 or 3 surroundings alive should live
 	return false;
 };
 
-Control.prototype.update = function() {
+Control.prototype.update = function(dt) {
 	var self = this;
+	// console.log(dt);
+	// set speed of update in seconds
+	self.timeElapsed += dt;
+	if (self.timeElapsed < self.speed) {
+		return;
+	} else {
+		self.timeElapsed = 0;
+	}
+
+	console.log("updated");
+
 	/*========== LIVE ==========*/
 	var cellsToLive = this.grids.cellsArray.filter(function(cell) {
 		return self.shouldLive(cell.x, cell.y);
@@ -63,7 +77,7 @@ Control.prototype.update = function() {
 
 	cellsToLive.forEach(function(cell) {
 		cell.isAlive = true;
-	})
+	});
 
 	/*========== DIE ==========*/
 	var cellsToDie = this.grids.cellsArray.filter(function(cell) {
@@ -72,5 +86,5 @@ Control.prototype.update = function() {
 
 	cellsToDie.forEach(function(cell) {
 		cell.isAlive = false;
-	})
-}
+	});
+};

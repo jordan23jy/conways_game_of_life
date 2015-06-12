@@ -26,7 +26,7 @@ var Engine = (function(global) {
 		var now = Date.now(),
 		dt = (now - lastTime) / 1000.0;
 
-		update();
+		update(dt);
 		clear();
 		render(ctx);
 
@@ -44,16 +44,17 @@ var Engine = (function(global) {
 		/*========== test ==========*/
 		control.getCell(1,1).isAlive = true;
 		control.getCell(1,2).isAlive = true;
-		control.getCell(2,1).isAlive = true;
-		control.getCell(2,2).isAlive = true;
+		control.getCell(1,3).isAlive = true;
+		// control.getCell(2,1).isAlive = true;
+		// control.getCell(2,2).isAlive = true;
 	}
 
-	function update() {
-		updateEntities();
+	function update(dt) {
+		updateEntities(dt);
 	}
 
-	function updateEntities() {
-		control.update();
+	function updateEntities(dt) {
+		control.update(dt);
 	}
 
 	function render(ctx) {
