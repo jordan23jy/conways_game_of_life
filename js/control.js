@@ -56,22 +56,24 @@ Control.prototype.shouldDie = function(x, y) {
 Control.prototype.update = function() {
 	var self = this;
 
-	/*========== LIVE ==========*/
-	var cellsToLive = this.grids.cellsArray.filter(function(cell) {
-		return self.shouldLive(cell.x, cell.y);
-	});
-
-	cellsToLive.forEach(function(cell) {
-		cell.isAlive = true;
-	});
-
-	/*========== DIE ==========*/
+	// get cells that should die
 	var cellsToDie = this.grids.cellsArray.filter(function(cell) {
 		return self.shouldDie(cell.x, cell.y);
 	});
 
+	// get cells that should live
+	var cellsToLive = this.grids.cellsArray.filter(function(cell) {
+		return self.shouldLive(cell.x, cell.y);
+	});
+
+	// update cells that should die
 	cellsToDie.forEach(function(cell) {
 		cell.isAlive = false;
+	});
+
+	// update cells that should live
+	cellsToLive.forEach(function(cell) {
+		cell.isAlive = true;
 	});
 };
 var control = new Control(grids);
