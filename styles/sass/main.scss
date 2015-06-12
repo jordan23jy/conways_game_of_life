@@ -68,10 +68,17 @@ html, body {
   background-color: $orange;
   .controls {
     text-align: center;
-    margin: 0 auto;
     display: block;
   }
   &.toggled {
     margin-left: 0;
   }
+  .instructions {
+    margin: 20px;
+    p {
+      text-align: left;
+      font-size: 0.9em;
+    }
+  }
 }
+

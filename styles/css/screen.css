@@ -50,7 +50,11 @@ html, body {
   background-color: #f1c40f; }
   .sidebar .controls {
     text-align: center;
-    margin: 0 auto;
     display: block; }
   .sidebar.toggled {
     margin-left: 0; }
+  .sidebar .instructions {
+    margin: 20px; }
+    .sidebar .instructions p {
+      text-align: left;
+      font-size: 0.9em; }
