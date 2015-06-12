@@ -7,7 +7,10 @@ var EventHandler = function(control) {
 
 EventHandler.prototype.init = function() {
 	this.onclick();
+	this.toggleControl();
+	this.getSpeed();
 };
+
 
 EventHandler.prototype.onclick = function() {
 	// set cell alive on click and when dragging
@@ -35,4 +38,29 @@ EventHandler.prototype.onclick = function() {
 		self.dragging = false;
 	})
 };
+
+// toggle control sidebar
+EventHandler.prototype.toggleControl = function() {
+	var menu = document.getElementById('menu');
+	var sidebar = document.getElementById('sidebar');
+	var main = document.getElementById('main');
+
+	menu.addEventListener('click', function(e) {
+	  sidebar.classList.toggle('toggled');
+	  main.classList.toggle('toggled');
+	  e.stopPropagation();
+	});
+}
+
+EventHandler.prototype.getSpeed = function() {
+
+	var self = this;
+	var speedOptions = document.getElementById('speed').options;
+	var selectedIndex = speedOptions.selectedIndex;
+	var selectedSpeed = speedOptions[selectedIndex].value;
+	var speed = document.querySelector('option');
+
+	return selectedSpeed;
+}
+
 var events = new EventHandler(control);

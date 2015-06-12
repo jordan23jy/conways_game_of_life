@@ -59,15 +59,6 @@ Control.prototype.shouldDie = function(x, y) {
 
 Control.prototype.update = function(dt) {
 	var self = this;
-	// console.log(dt);
-	// set speed of update in seconds
-	self.timeElapsed += dt;
-	if (self.timeElapsed < self.speed) {
-		return;
-	} else {
-		self.timeElapsed = 0;
-	}
-
 
 	/*========== LIVE ==========*/
 	var cellsToLive = this.grids.cellsArray.filter(function(cell) {

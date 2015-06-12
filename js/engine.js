@@ -3,8 +3,10 @@ var Engine = (function(global) {
 	win = global.window,
 	canvas = doc.getElementById('game'),
 	ctx = canvas.getContext('2d'),
+	gameSpeed = 2,
 	self = this,
-	lastTime;
+	lastTime,
+	timeElapsed;
 
 	// ensure requestAnimationFrame works in several browsers
 	win.requestAnimationFrame = win.requestAnimationFrame ||
@@ -12,8 +14,6 @@ var Engine = (function(global) {
 	                            win.mozRequestAnimationFrame ||
 	                            win.oRequestAnimationFrame ||
 	                            win.msRequestAnimationFrame;
-
-
 
 	self.background = 'grey';
 
@@ -27,16 +27,12 @@ var Engine = (function(global) {
 			canvas.height = GRID_HEIGHT + 1;
 			canvas.width = GRID_WIDTH + 1;
 
-
-
-
-
-
 	function main() {
 		var now = Date.now(),
 		dt = (now - lastTime) / 1000.0;
 
 		update(dt);
+
 		clear();
 		render(ctx);
 
@@ -61,11 +57,19 @@ var Engine = (function(global) {
 	}
 
 	function update(dt) {
+		timeElapsed += dt;
+		if (timeElapsed < gameSpeed) {
+			return;
+		} else {
+			timeElapsed = 0;
+		}
+
 		updateEntities(dt);
 	}
 
 	function updateEntities(dt) {
 		control.update(dt);
+		setSpeed();
 	}
 
 	function render(ctx) {
@@ -83,6 +87,10 @@ var Engine = (function(global) {
 
 	function restart() {
 
+	}
+
+	function setSpeed() {
+		gameSpeed = events.getSpeed();
 	}
 
 	init();
