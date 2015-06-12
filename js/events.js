@@ -22,8 +22,8 @@ EventHandler.prototype.onClickRenderCell = function() {
 		var y = Math.floor(event.offsetY / self.control.grids.height);
 
 		self.control.getCell(x, y).isAlive = true;
-		self.dragging = true
-	})
+		self.dragging = true;
+	});
 
 	self.canvas.mousemove(function(event) {
 		var x = Math.floor(event.offsetX / self.control.grids.width);
@@ -32,11 +32,11 @@ EventHandler.prototype.onClickRenderCell = function() {
 		if (self.dragging) {
 			self.control.getCell(x, y).isAlive = true;
 		}
-	})
+	});
 
 	self.canvas.mouseup(function(event) {
 		self.dragging = false;
-	})
+	});
 };
 
 EventHandler.prototype.toggleStartGame = function() {
@@ -45,17 +45,18 @@ EventHandler.prototype.toggleStartGame = function() {
 
 	// click event
 	buttonStart.addEventListener('click', function(event) {
-		self.gameStarted = !self.gameStarted
+		self.gameStarted = !self.gameStarted;
 		self.buttonClassToggle();
-	})
+	});
 
 	// spacebar event
 	window.addEventListener('keydown', function(event) {
 		if (event.keyCode === 32) {
-			self.gameStarted = !self.gameStarted
+			event.preventDefault();
+			self.gameStarted = !self.gameStarted;
 			self.buttonClassToggle();
 		}
-	})
+	});
 };
 
 // switch button start/stop
