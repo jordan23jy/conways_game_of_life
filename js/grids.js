@@ -3,6 +3,8 @@ var Grids = function(numRows, numCols, width, height) {
 	this.numCols = numCols;
 	this.width = width;
 	this.height = height;
+	this.canvasWidth = numCols * width;
+	this.canvasHeight = numRows * height;
 
 	this.gridBackground = 'lightgrey';
 	this.aliveCellColour = 'green';
@@ -22,7 +24,7 @@ Grids.prototype.render = function(ctx) {
 	var self = this;
 	/*========== render grid lines ==========*/
 	ctx.fillStyle = 'white';
-	ctx.fillRect(0, 0, self.numCols * self.width, self.numRows * self.height);
+	ctx.fillRect(0, 0, self.canvasWidth, self.canvasHeight);
 
 	// draw column;
 	for (var i = 0; i < self.numCols; i++) {

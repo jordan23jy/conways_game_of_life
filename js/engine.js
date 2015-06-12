@@ -6,21 +6,24 @@ var Engine = (function(global) {
 	self = this,
 	lastTime;
 
-	canvas.height = 800;
-	canvas.width = 800;
+
 
 	self.background = 'grey';
 
 	var CELL_WIDTH = 20,
 			CELL_HEIGTH = 20,
-			NO_COLS = 10,
-			NO_ROWS = 10,
-			MATRIX_HEIGTH = CELL_HEIGTH * NO_ROWS,
-			MATRIX_WIDTH = CELL_WIDTH * NO_COLS;
+			NO_COLS = 20,
+			NO_ROWS = 20,
+			GRID_HEIGHT = CELL_HEIGTH * NO_ROWS,
+			GRID_WIDTH = CELL_WIDTH * NO_COLS;
+
+			canvas.height = GRID_HEIGHT + 1;
+			canvas.width = GRID_WIDTH + 1;
 
 
 	var grids = new Grids(NO_ROWS, NO_COLS, CELL_WIDTH, CELL_HEIGTH);
 	var control = new Control(grids);
+	var events = new EventHandler(control);
 
 	function main() {
 		var now = Date.now(),
@@ -39,6 +42,7 @@ var Engine = (function(global) {
 	function init() {
 		lastTime = Date.now();
 		grids.init();
+		events.init();
 		main();
 
 		/*========== test ==========*/
