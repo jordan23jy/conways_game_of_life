@@ -1,11 +1,7 @@
 var Control = function(grids) {
 	this.grids = grids;
-	this.speed = 2;
+	this.speed = 1;
 	this.timeElapsed = 0;
-};
-
-Control.prototype.alive = function() {
-
 };
 
 Control.prototype.getCell = function(x, y) {
@@ -57,7 +53,7 @@ Control.prototype.shouldDie = function(x, y) {
 	return false;
 };
 
-Control.prototype.update = function(dt) {
+Control.prototype.update = function() {
 	var self = this;
 
 	/*========== LIVE ==========*/

@@ -1,10 +1,11 @@
 var Engine = (function(global) {
-	var doc = global.document,
-	win = global.window,
-	canvas = doc.getElementById('game'),
-	ctx = canvas.getContext('2d'),
+
+	var doc   = global.document,
+	win       = global.window,
+	canvas    = doc.getElementById('game'),
+	ctx       = canvas.getContext('2d'),
 	gameSpeed = 2,
-	self = this,
+	self      = this,
 	lastTime,
 	timeElapsed;
 
@@ -15,34 +16,34 @@ var Engine = (function(global) {
 	                            win.oRequestAnimationFrame ||
 	                            win.msRequestAnimationFrame;
 
-	self.background = 'grey';
-
 	var CELL_WIDTH = 20,
-			CELL_HEIGTH = 20,
-			NO_COLS = 20,
-			NO_ROWS = 20,
-			GRID_HEIGHT = CELL_HEIGTH * NO_ROWS,
-			GRID_WIDTH = CELL_WIDTH * NO_COLS;
+	CELL_HEIGTH    = 20,
+	NO_COLS        = 20,
+	NO_ROWS        = 20,
+	GRID_HEIGHT    = CELL_HEIGTH * NO_ROWS,
+	GRID_WIDTH     = CELL_WIDTH * NO_COLS;
 
-			canvas.height = GRID_HEIGHT + 1;
-			canvas.width = GRID_WIDTH + 1;
+	canvas.height  = GRID_HEIGHT + 1;
+	canvas.width   = GRID_WIDTH + 1;
+
+
 
 	function main() {
+		// get time delta
 		var now = Date.now(),
 		dt = (now - lastTime) / 1000.0;
 
+		// update data first then clear canvas and render canvas again
 		update(dt);
-
 		clear();
 		render(ctx);
 
 		lastTime = now;
-		// console.log("hello");
-
 		win.requestAnimationFrame(main);
 	}
 
 	function init() {
+		// set time on start to get time delta
 		lastTime = Date.now();
 		grids.init();
 		events.init();
@@ -52,11 +53,17 @@ var Engine = (function(global) {
 		control.getCell(1,1).isAlive = true;
 		control.getCell(1,2).isAlive = true;
 		control.getCell(1,3).isAlive = true;
-		// control.getCell(2,1).isAlive = true;
-		// control.getCell(2,2).isAlive = true;
+		control.getCell(2,1).isAlive = true;
+		control.getCell(2,2).isAlive = true;
 	}
 
 	function update(dt) {
+
+		// only start when gameStarted is true
+		if (!events.gameStarted) {
+			return;
+		}
+		// update according to set speed by user
 		timeElapsed += dt;
 		if (timeElapsed < gameSpeed) {
 			return;
@@ -64,11 +71,11 @@ var Engine = (function(global) {
 			timeElapsed = 0;
 		}
 
-		updateEntities(dt);
+		updateEntities();
 	}
 
-	function updateEntities(dt) {
-		control.update(dt);
+	function updateEntities() {
+		control.update();
 		setSpeed();
 	}
 
