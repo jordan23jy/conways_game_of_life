@@ -62,8 +62,8 @@ var Cell = function(x, y) {
 
 var CELL_WIDTH = 20,
 		CELL_HEIGTH = 20,
-		NO_COLS = 20,
-		NO_ROWS = 20,
+		NO_COLS = 40,
+		NO_ROWS = 40,
 		GRID_HEIGHT = CELL_HEIGTH * NO_ROWS,
 		GRID_WIDTH = CELL_WIDTH * NO_COLS;
 var grids = new Grids(NO_ROWS, NO_COLS, CELL_WIDTH, CELL_HEIGTH);

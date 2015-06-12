@@ -28,11 +28,12 @@
 					<select name="speed" id="speed" class="form-control">
 						<option value="3">1</option>
 						<option value="2">2</option>
-						<option value="1" selected>3</option>
-						<option value="0.5">4</option>
+						<option value="1">3</option>
+						<option value="0.5" selected>4</option>
 						<option value="0.25">5</option>
 						<option value="0.1">6</option>
 						<option value="0.05">7</option>
+						<option value="0.025">8</option>
 					</select>
 				</div>
 				<!-- END FORM-GROUP -->
@@ -40,6 +41,7 @@
 					<div class="instructions">
 						<p>Hit spacebar to start of stop the game</p>
 						<p>Toggle speed of simulation in the options above</p>
+						<p>Click or click and drag grids to generate live cells</p>
 						<h3>Conway's Rules:</h3>
 						<p>Any live cell with fewer than two live neighbours dies, as if caused by under-population.</p>
 						<p>Any live cell with two or three live neighbours lives on to the next generation.</p>
@@ -60,9 +62,6 @@
 
 		<!-- jQuery -->
 		<script src="//code.jquery.com/jquery.js"></script>
-		<!-- Bootstrap JavaScript -->
-		<!-- <script src="//net($dna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
-		<!-- <script src="js/jquery.js"></script> -->
 		<script src="js/grids.js"></script>
 		<script src="js/control.js"></script>
 		<script src="js/events.js"></script>

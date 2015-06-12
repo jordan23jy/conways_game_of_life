@@ -4,7 +4,7 @@ var Engine = (function(global) {
 	win       = global.window,
 	canvas    = doc.getElementById('game'),
 	ctx       = canvas.getContext('2d'),
-	gameSpeed = 2,
+	gameSpeed = 0.5,
 	self      = this,
 	lastTime,
 	timeElapsed;
@@ -18,8 +18,8 @@ var Engine = (function(global) {
 
 	var CELL_WIDTH = 20,
 	CELL_HEIGTH    = 20,
-	NO_COLS        = 20,
-	NO_ROWS        = 20,
+	NO_COLS        = 40,
+	NO_ROWS        = 40,
 	GRID_HEIGHT    = CELL_HEIGTH * NO_ROWS,
 	GRID_WIDTH     = CELL_WIDTH * NO_COLS;
 
@@ -48,13 +48,6 @@ var Engine = (function(global) {
 		grids.init();
 		events.init();
 		main();
-
-		/*========== test ==========*/
-		control.getCell(1,1).isAlive = true;
-		control.getCell(1,2).isAlive = true;
-		control.getCell(1,3).isAlive = true;
-		control.getCell(2,1).isAlive = true;
-		control.getCell(2,2).isAlive = true;
 	}
 
 	function update(dt) {

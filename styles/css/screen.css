@@ -15,7 +15,7 @@ h1 {
   font-size: 4em; }
 
 #main {
-  padding: 50px;
+  padding: 20px 50px 50px 50px;
   margin-right: -300px; }
   #main.toggled {
     margin-right: 0px; }
@@ -39,7 +39,8 @@ h1 {
   position: absolute;
   z-index: 10;
   top: 40px;
-  left: 20px; }
+  left: 20px;
+  position: fixed; }
 
 .sidebar {
   float: left;
