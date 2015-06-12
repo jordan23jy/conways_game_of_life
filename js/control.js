@@ -68,7 +68,6 @@ Control.prototype.update = function(dt) {
 		self.timeElapsed = 0;
 	}
 
-	console.log("updated");
 
 	/*========== LIVE ==========*/
 	var cellsToLive = this.grids.cellsArray.filter(function(cell) {
@@ -88,3 +87,4 @@ Control.prototype.update = function(dt) {
 		cell.isAlive = false;
 	});
 };
+var control = new Control(grids);

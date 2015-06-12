@@ -2,6 +2,55 @@
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+html, body {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  background: #faf8ef;
+  color: #776E65;
+  font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+  font-size: 18px; }
+
+.wrapper {
+  width: 100%; }
+  .wrapper .row {
+    margin-top: 20px;
+    margin-bottom: 20px; }
+  .wrapper button {
+    width: 90%; }
+
+#main {
+  padding: 50px;
+  margin-right: -300px; }
+  #main.toggled {
+    margin-right: 0px; }
+
+.header_menu {
+  margin-top: 20px;
+  display: inline-block;
+  position: absolute;
+  z-index: 10;
+  top: 40px;
+  left: 20px; }
+
 #game {
+  right: 500px;
   display: block;
-  margin: auto; }
+  margin: 50px auto; }
+
+.sidebar {
+  float: left;
+  position: fixed;
+  height: 100%;
+  width: 300px;
+  margin: 0 auto;
+  margin-left: -300px;
+  display: block;
+  padding: 20px;
+  background-color: #f1c40f; }
+  .sidebar .controls {
+    text-align: center;
+    margin: 0 auto;
+    display: block; }
+  .sidebar.toggled {
+    margin-left: 0; }

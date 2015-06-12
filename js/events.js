@@ -35,3 +35,4 @@ EventHandler.prototype.onclick = function() {
 		self.dragging = false;
 	})
 };
+var events = new EventHandler(control);

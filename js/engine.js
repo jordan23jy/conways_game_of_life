@@ -6,6 +6,13 @@ var Engine = (function(global) {
 	self = this,
 	lastTime;
 
+	// ensure requestAnimationFrame works in several browsers
+	win.requestAnimationFrame = win.requestAnimationFrame ||
+	                            win.webkitRequestAnimationFrame ||
+	                            win.mozRequestAnimationFrame ||
+	                            win.oRequestAnimationFrame ||
+	                            win.msRequestAnimationFrame;
+
 
 
 	self.background = 'grey';
@@ -21,9 +28,9 @@ var Engine = (function(global) {
 			canvas.width = GRID_WIDTH + 1;
 
 
-	var grids = new Grids(NO_ROWS, NO_COLS, CELL_WIDTH, CELL_HEIGTH);
-	var control = new Control(grids);
-	var events = new EventHandler(control);
+
+
+
 
 	function main() {
 		var now = Date.now(),
