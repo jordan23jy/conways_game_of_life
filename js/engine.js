@@ -43,14 +43,17 @@ var Engine = (function(global) {
 
 		/*========== test ==========*/
 		control.getCell(1,1).isAlive = true;
+		control.getCell(1,2).isAlive = true;
+		control.getCell(2,1).isAlive = true;
+		control.getCell(2,2).isAlive = true;
 	}
 
 	function update() {
-
+		updateEntities();
 	}
 
 	function updateEntities() {
-
+		control.update();
 	}
 
 	function render(ctx) {

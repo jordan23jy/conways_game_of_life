@@ -13,7 +13,7 @@ Control.prototype.getCell = function(x, y) {
 	return this.grids.cellsArray[x + y * this.grids.numCols];
 };
 
-Control.prototype.getSurroundings = function(x,y) {
+Control.prototype.getSurroundings = function(x, y) {
 	return [
 		this.getCell(x-1, y-1),
 		this.getCell(x-1, y),
@@ -26,8 +26,8 @@ Control.prototype.getSurroundings = function(x,y) {
 	];
 };
 
-Control.prototype.shouldLive = function() {
-	var surroundings = this.getSurroundings();
+Control.prototype.shouldLive = function(x, y) {
+	var surroundings = this.getSurroundings(x, y);
 	var surroundingAlive = surroundings.filter(function(cell) {
 		return cell.isAlive;
 	});
@@ -38,12 +38,11 @@ Control.prototype.shouldLive = function() {
 	return false;
 };
 
-Control.prototype.shouldDie = function() {
-	var surroundings = this.getSurroundings();
+Control.prototype.shouldDie = function(x, y) {
+	var surroundings = this.getSurroundings(x, y);
 	var surroundingAlive = surroundings.filter(function(cell) {
 		return cell.isAlive;
 	});
-
 	// death by under-population
 	if (surroundingAlive.length < 2) {
 		return true;
@@ -52,10 +51,26 @@ Control.prototype.shouldDie = function() {
 	if (surroundingAlive.length > 3) {
 		return true;
 	}
-
 	return false;
 };
 
-// Control.prototype.setCellAlive = function(x, y) {
-// 	this.getCell(x, y).isAlive = true;
-// }
+Control.prototype.update = function() {
+	var self = this;
+	/*========== LIVE ==========*/
+	var cellsToLive = this.grids.cellsArray.filter(function(cell) {
+		return self.shouldLive(cell.x, cell.y);
+	});
+
+	cellsToLive.forEach(function(cell) {
+		cell.isAlive = true;
+	})
+
+	/*========== DIE ==========*/
+	var cellsToDie = this.grids.cellsArray.filter(function(cell) {
+		return self.shouldDie(cell.x, cell.y);
+	});
+
+	cellsToDie.forEach(function(cell) {
+		cell.isAlive = false;
+	})
+}
