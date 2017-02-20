@@ -8,7 +8,7 @@ The [Game of Life](https://en.wikipedia.org/wiki/Conway's_Game_of_Life), also kn
 4. Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
 
 ##Instructions
-- Play it here [http://blog.jordanyong.com/conways_game_of_life/](http://blog.jordanyong.com/conways_game_of_life/)
+- Play it here [http://obrin.github.io/conways_game_of_life/](http://obrin.github.io/conways_game_of_life/)
 - Click or click and drag on the grids to generate live cells
 - Start the simulation by hitting the spacebar or by the start button
 - Adjust the speed in the options
